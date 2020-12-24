@@ -3,6 +3,7 @@ package id.exomatik.letstudydaftar.utils
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
+import android.net.ConnectivityManager
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -26,6 +27,14 @@ fun dismissKeyboard(activity: Activity) {
     if (currentFocus != null) imm.hideSoftInputFromWindow(
         currentFocus.applicationWindowToken, 0
     )
+}
+
+@Suppress("DEPRECATION")
+fun checkInternetConnection(context: Context?): Boolean {
+    val connectionManager =
+        context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return (connectionManager.activeNetworkInfo != null && connectionManager.activeNetworkInfo!!.isAvailable
+            && connectionManager.activeNetworkInfo!!.isConnected)
 }
 
 @BindingAdapter("visible")

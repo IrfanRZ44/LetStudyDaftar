@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:text="@string/_2020_all_right_reserved_letstudy_cpns"
         style="@style/textStandardWhite"
+        android:textSize="@dimen/text_h2"
         android:textColor="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/h3"

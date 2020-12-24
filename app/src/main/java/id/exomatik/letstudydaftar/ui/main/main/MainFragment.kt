@@ -1,6 +1,7 @@
 package id.exomatik.letstudydaftar.ui.main.main
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -11,6 +12,9 @@ import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.Toast
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import id.exomatik.letstudydaftar.R
 import id.exomatik.letstudydaftar.base.BaseFragmentBind
 import id.exomatik.letstudydaftar.databinding.FragmentMainBinding
@@ -28,15 +32,22 @@ class MainFragment : BaseFragmentBind<FragmentMainBinding>(){
     private var mFilePathCallback: ValueCallback<Array<Uri>>? = null
     private var mCameraPhotoPath: String? = null
 
-
     override fun myCodeHere() {
         bind.lifecycleOwner = this
         viewModel = MainViewModel()
         bind.viewModel = viewModel
 
-        viewModel.setUpWebView(bind.web)
+        viewModel.getInfoApps(bind.web, context, activity)
         setUpWebChromeClient()
-        viewModel.setUpAdmob(context, bind.adView)
+
+        setUpAdmob()
+    }
+
+    private fun setUpAdmob(){
+        MobileAds.initialize(context) {}
+
+        val adRequest = AdRequest.Builder().build()
+        bind.adView.loadAd(adRequest)
     }
 
     private fun setUpWebChromeClient(){

@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">LetStudy - Pendaftaran</string>
-<!--    <string name="admobID">ca-app-pub-1776006511024568~2549956776</string>-->
-<!--    <string name="admobBanner">ca-app-pub-1776006511024568/7472763354</string>-->
-    <string name="admobID">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="admobBanner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admobID">ca-app-pub-1776006511024568~2549956776</string>
+    <string name="admobBanner">ca-app-pub-1776006511024568/4762230728</string>
+
+<!-- Tes Admob   -->
+<!--    <string name="admobID">ca-app-pub-3940256099942544~3347511713</string>-->
+<!--    <string name="admobBanner">ca-app-pub-3940256099942544/6300978111</string>-->
 
 
     <string name="_2020_all_right_reserved_letstudy_cpns">2020 All Right Reserved | LetStudy CPNS</string>
