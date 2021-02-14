@@ -5,14 +5,17 @@ import android.content.pm.PackageManager
 import android.os.CountDownTimer
 import androidx.core.app.ActivityCompat
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.*
 import id.exomatik.letstudydaftar.R
 import id.exomatik.letstudydaftar.base.BaseFragment
+import id.exomatik.letstudydaftar.utils.Constant
 import id.exomatik.letstudydaftar.utils.showSnackbar
 
 class SplashFragment : BaseFragment() {
     override fun getLayoutResource(): Int = R.layout.fragment_splash
 
     override fun myCodeHere() {
+        setUpIntersitialAds()
         navigate()
         checkStoragePermission()
     }
@@ -49,5 +52,36 @@ class SplashFragment : BaseFragment() {
                 findNavController().navigate(R.id.mainFragment)
             }
         }.start()
+    }
+
+    private fun setUpIntersitialAds(){
+        MobileAds.initialize(activity) {}
+
+        val mInterstitialAd = InterstitialAd(activity)
+        mInterstitialAd.adUnitId = Constant.admobIntersitial
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+
+        mInterstitialAd.adListener = object: AdListener() {
+            override fun onAdLoaded() {
+                if (mInterstitialAd.isLoaded) {
+                    mInterstitialAd.show()
+                }
+            }
+
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+            }
+
+            override fun onAdOpened() {
+            }
+
+            override fun onAdClicked() {
+            }
+
+            override fun onAdLeftApplication() {
+            }
+
+            override fun onAdClosed() {
+            }
+        }
     }
 }
